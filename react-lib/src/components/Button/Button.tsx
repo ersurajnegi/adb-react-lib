@@ -8,7 +8,10 @@ export interface ButtonProps {
   counter?: number;
 }
 
-const Button = (props: ButtonProps) => {
+const Button = (props: any) => {
+  if (props.children) {
+    return props.children;
+  }
   const { counter, updateCount } = useButtonContext();
   return (
     <>
