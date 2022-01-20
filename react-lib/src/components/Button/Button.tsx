@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useButtonContext } from "../../context/buttonContext";
-// import "./Button.css";
+import "./Button.css";
 // import { useSelector, useDispatch, connect } from "react-redux";
 // import State from "../../redux/state";
 export interface ButtonProps {
