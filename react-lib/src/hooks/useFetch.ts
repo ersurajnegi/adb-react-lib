@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useButtonTalon } from "../talons";
+import { useButtonContext } from "../context";
 
 const useFetch = () => {
-  const { list, loadList } = useButtonTalon();
+  const { list, loadList } = useButtonContext();
   const [isLoading, setIsLoading] = useState(false);
 
   const loadTheList = async () => {

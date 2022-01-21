@@ -1,44 +1,48 @@
 import "./App.css";
 import { Button, useFetch, useButtonContext } from "adb-react-lib";
-import ContextProvider from "./contextProvider";
 import { useSelector } from "react-redux";
 
 function App() {
-  const test = useFetch();
-  console.log(test);
+  //you can use the hooks which internally uses the context like this
+  const { list, loadTheList } = useFetch();
+
   let responseTemp;
 
-  // if (response) {
-  //   responseTemp = (response as any).map((item: any) => (
-  //     <p key={`${item.id}${item.userId}`}>{item.id}</p>
-  //   ));
-  // }
+  if (list) {
+    responseTemp = (list as any).map((item: any) => (
+      <p key={`${item.id}${item.userId}`}>{item.id}</p>
+    ));
+  }
+  const loadList = () => {
+    loadTheList();
+  };
   return (
-    <ContextProvider>
-      <div className="App">
-        <header className="App-header">
-          <>
-            From Library Component
-            <Button label="Test" />
-            <br />
-            From passing as a Child
-            <Button label="Test">
-              <Child></Child>
-            </Button>
-            <br />
-            From Client App
-            <Test />
-            {responseTemp}
-          </>
-        </header>
-      </div>
-    </ContextProvider>
+    <div className="App">
+      <header className="App-header">
+        <>
+          <button onClick={loadList}>Load the list</button>
+          <br />
+          From Library Component
+          <Button label="Test" />
+          <br />
+          From passing as a Child
+          <Button label="Test">
+            <Child></Child>
+          </Button>
+          <br />
+          From Client App
+          <Test />
+          {responseTemp}
+        </>
+      </header>
+    </div>
   );
 }
 
 export default App;
 
 const Test = () => {
+  //you can use the context directly like this
   const { counter, updateCount } = useButtonContext();
   const test = useSelector((state: any) => state.counter);
 
