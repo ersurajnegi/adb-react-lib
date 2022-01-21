@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useMemo } from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import State from "../redux/state";
 
 export const updateCount = () => {
