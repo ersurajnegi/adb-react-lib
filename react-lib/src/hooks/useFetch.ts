@@ -3,17 +3,21 @@ import { useButtonContext } from "../context";
 
 const useFetch = () => {
   const { list, loadList } = useButtonContext();
+  const [isLoading, setIsLoading] = useState(false);
 
   const loadTheList = async () => {
     try {
+      setIsLoading(true);
       const res = await fetch("https://fakestoreapi.com/carts", {});
       const json = await res.json();
+      setIsLoading(true);
       loadList(json);
     } catch (error: any) {
       loadList([]);
+      setIsLoading(true);
     }
   };
-  return { list, loadTheList };
+  return { list, loadTheList, isLoading };
 };
 
 export { useFetch };

@@ -4,8 +4,8 @@ import ContextProvider from "./contextProvider";
 import { useSelector } from "react-redux";
 
 function App() {
-  const { isLoading } = useFetch();
-
+  const test = useFetch();
+  console.log(test);
   let responseTemp;
 
   // if (response) {
@@ -17,23 +17,19 @@ function App() {
     <ContextProvider>
       <div className="App">
         <header className="App-header">
-          {isLoading ? (
-            "<p>Loading....</p>"
-          ) : (
-            <>
-              From Library Component
-              <Button label="Test" />
-              <br />
-              From passing as a Child
-              <Button label="Test">
-                <Child></Child>
-              </Button>
-              <br />
-              From Client App
-              <Test />
-              {responseTemp}
-            </>
-          )}
+          <>
+            From Library Component
+            <Button label="Test" />
+            <br />
+            From passing as a Child
+            <Button label="Test">
+              <Child></Child>
+            </Button>
+            <br />
+            From Client App
+            <Test />
+            {responseTemp}
+          </>
         </header>
       </div>
     </ContextProvider>

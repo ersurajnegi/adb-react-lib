@@ -18,9 +18,7 @@ export const loadList = (payload) => {
 
 const ButtonContext = createContext<any | undefined>(undefined);
 const Provider = (props: any) => {
-  // console.log("inside buttoncontext PROVIDER");
   const { counter, list, children, updateCount, loadList } = props;
-  // console.log('counter :', props.counter);
   const contextValue = { counter, updateCount, list, loadList };
 
   return (
