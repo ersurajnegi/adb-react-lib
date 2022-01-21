@@ -9,12 +9,19 @@ export const updateCount = () => {
   };
 };
 
+export const loadList = (payload) => {
+  return {
+    type: "LOAD_LIST",
+    payload,
+  };
+};
+
 const ButtonContext = createContext<any | undefined>(undefined);
 const Provider = (props: any) => {
   // console.log("inside buttoncontext PROVIDER");
-  const { counter, children, updateCount } = props;
+  const { counter, list, children, updateCount, loadList } = props;
   // console.log('counter :', props.counter);
-  const contextValue = { counter, updateCount };
+  const contextValue = { counter, updateCount, list, loadList };
 
   return (
     <ButtonContext.Provider value={contextValue}>
@@ -25,10 +32,12 @@ const Provider = (props: any) => {
 
 const mapStateToProps = (state: State) => ({
   counter: state.counter,
+  list: state.list,
 });
 
 const mapDispatchToProps = {
   updateCount,
+  loadList,
 };
 
 const ButtonContextProvider = connect(

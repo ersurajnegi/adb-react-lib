@@ -24,6 +24,10 @@ function App() {
               From Library Component
               <Button label="Test" />
               <br />
+              From passing as a Child
+              <Button label="Test">
+                <Child></Child>
+              </Button>
               <br />
               From Client App
               <Test />
@@ -45,6 +49,17 @@ const Test = () => {
   return (
     <button onClick={updateCount}>
       Hi From Test {counter}, {test}
+    </button>
+  );
+};
+
+const Child = () => {
+  const { counter, updateCount } = useButtonContext();
+  const test = useSelector((state: any) => state.counter);
+
+  return (
+    <button onClick={updateCount}>
+      Hi From Child {counter}, {test}
     </button>
   );
 };

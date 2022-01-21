@@ -14,7 +14,21 @@ const counter: Reducer<number, AnyAction> = (
   }
 };
 
+const list: Reducer<Array<any>, AnyAction> = (
+  state: Array<any> | undefined,
+  action: any
+) => {
+  switch (action.type) {
+    case "LOAD_LIST": {
+      return action?.payload;
+    }
+    default:
+      return [];
+  }
+};
+
 const rootReducer = combineReducers({
   counter,
+  list
 });
 export default rootReducer;
